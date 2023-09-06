@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fuga-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: fuga-ipaddress # optional
+spec:
+  rules:
+    - host: fuga.example.com
+      http:
+        paths:
+          - backend:
+              serviceName: reactdeploytest
+              servicePort: 3000

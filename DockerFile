@@ -1,0 +1,19 @@
+FROM node:latest
+
+WORKDIR /app/
+
+RUN apt-get update -y && \
+    apt-get install -y git g++ python3 build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY package.json /app/
+
+RUN npm install
+
+COPY . /app/
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

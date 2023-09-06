@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: reactdeploytest 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reactdeploytest
+  template:
+    metadata:
+      labels:
+        app: reactdeploytest 
+    spec:
+      containers:
+        - name: reactdeploytest 
+          image: registry4sss.azurecr.io/reactdeploytest
+          ports:
+          - containerPort: 3000
